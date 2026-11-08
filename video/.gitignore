@@ -1,0 +1,23 @@
+node_modules/
+out/
+.remotion/
+# Your own media (voice-over, music, images, models) stays local: the pdfcraft
+# repo's asset policy (AGENTS.md §1, `cargo xtask assets`) requires an
+# ATTRIBUTION.toml entry for every committed asset.
+public/**/*.mp3
+public/**/*.wav
+public/**/*.ogg
+public/**/*.flac
+public/**/*.m4a
+public/**/*.aac
+public/**/*.mp4
+public/**/*.mov
+public/**/*.webm
+public/**/*.png
+public/**/*.jpg
+public/**/*.jpeg
+public/**/*.webp
+public/**/*.svg
+public/**/*.glb
+public/**/*.gltf
+public/**/*.hdr
