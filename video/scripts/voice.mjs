@@ -8,9 +8,18 @@
 //
 // Output: <out>/<sceneId>.wav and <out>/manifest.json with each scene's duration and
 // per-word timings (estimated by spreading words over the clip by length) for captions.
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+
+// Node's fetch ignores HTTPS_PROXY unless NODE_USE_ENV_PROXY is set; re-run with it behind a proxy.
+if ((process.env.HTTPS_PROXY || process.env.https_proxy) && !process.env.NODE_USE_ENV_PROXY) {
+  const r = spawnSync(process.execPath, ["--no-warnings", ...process.argv.slice(1)], {
+    stdio: "inherit",
+    env: { ...process.env, NODE_USE_ENV_PROXY: "1" },
+  });
+  process.exit(r.status ?? 1);
+}
 
 const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith("--") ? [...acc, [a.slice(2), all[i + 1]]] : acc), []),
