@@ -5,6 +5,7 @@ import { FPS as AVIATION_FPS, loadTimeline, totalFrames, type Narration } from "
 import * as ep1 from "./aviation/ep1";
 import * as ep2 from "./aviation/ep2";
 import * as ep3 from "./aviation/ep3";
+import { Turntable } from "./aviation/lib/Turntable";
 
 export const FPS = 30;
 
@@ -34,6 +35,7 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       ))}
+      <Composition id="AirplaneTurntable" component={Turntable} fps={30} width={1920} height={1080} durationInFrames={30 * 10} />
       <Composition
         id="Main"
         component={Main}
