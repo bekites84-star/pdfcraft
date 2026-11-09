@@ -10,6 +10,11 @@
       "text": "The sky has no roads and no street signs. So how do pilots know which way to go? Let's find out!"
     },
     {
+      "id": "oldways",
+      "title": "The Old Ways",
+      "text": "Long ago, pilots found their way with paper maps, a compass, and landmarks on the ground, like rivers, roads and railway lines. On cloudy days, that was really hard!"
+    },
+    {
       "id": "plan",
       "title": "The Flight Plan",
       "text": "Before every flight, the pilots load a flight plan into the computer. It's a list of invisible points in the sky, called waypoints, joined up like a connect-the-dots puzzle."
@@ -17,12 +22,17 @@
     {
       "id": "gps",
       "title": "Satellites",
-      "text": "But how does the plane know where it is right now? Satellites! Dozens of GPS satellites circle high above the Earth. By listening to several of them at once, the plane works out exactly where it is."
+      "text": "But how does the plane know where it is right now? Satellites! Dozens of GPS satellites circle high above the Earth. Each one sends out a radio signal saying where it is and what time it is. By listening to several of them at once, the plane works out exactly where it is."
     },
     {
       "id": "autopilot",
       "title": "Autopilot",
-      "text": "Then the autopilot does the steering, flying from waypoint to waypoint. The pilots keep a close watch, and talk by radio with air traffic control."
+      "text": "Then the autopilot does the steering, flying smoothly from waypoint to waypoint, while the pilots keep a close watch the whole time."
+    },
+    {
+      "id": "atc",
+      "title": "Air Traffic Control",
+      "text": "Down on the ground, air traffic controllers watch every plane on their radar screens. Like traffic lights for the sky, they keep planes safely apart, giving each one its own height and path."
     },
     {
       "id": "beam",
@@ -32,7 +42,7 @@
     {
       "id": "outro",
       "title": "Remember!",
-      "text": "Flight plan, waypoints, satellites, autopilot, and radio beams. That's how pilots find their way! See you on the next flight."
+      "text": "Maps, flight plans, satellites, autopilot, air traffic control, and radio beams. That's how pilots find their way! See you on the next flight."
     }
   ]
 }

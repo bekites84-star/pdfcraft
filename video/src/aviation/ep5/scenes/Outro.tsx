@@ -8,6 +8,7 @@ const POINTS: [string, string][] = [
   ["rivers", "Rivers of air"],
   ["heat", "Rising heat"],
   ["mountains", "Mountains & storms"],
+  ["jet", "Jet streams"],
   ["wings", "Strong wings"],
   ["seatbelts", "Seatbelts on"],
 ];

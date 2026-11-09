@@ -31,8 +31,6 @@ export const Autopilot: React.FC<{ scene: SceneTimeline }> = ({ scene }) => {
   const cam: [number, number, number] = [px - tan.x * 13 + tan.z * 3, py + 4.2, pz - tan.z * 13 - tan.x * 3];
   const look: [number, number, number] = [px + tan.x * 9, py - 0.8, pz + tan.z * 9];
   const autopilot = ramp(frame, wordFrame(scene, "autopilot", 0, 20), wordFrame(scene, "autopilot", 0, 20) + 10);
-  const atcAt = wordFrame(scene, "traffic", 0, 220) - 10;
-  const atc = ramp(frame, atcAt, atcAt + 10);
   const routePts = ROUTE.getSpacedPoints(120).map((p) => [p.x, p.y - 0.05, p.z] as [number, number, number]);
   return (
     <AbsoluteFill>
@@ -66,10 +64,6 @@ export const Autopilot: React.FC<{ scene: SceneTimeline }> = ({ scene }) => {
         <div style={{ fontSize: 30, fontWeight: 700, color: "#51607a" }}>AUTOPILOT</div>
         <div style={{ fontSize: 60, fontWeight: 900, color: "#22b35e" }}>ON ✓</div>
         <div style={{ fontSize: 30, fontWeight: 700, color: "#b0179b" }}>following the magenta line</div>
-      </InfoCard>
-      <InfoCard corner="tl" show={atc} style={{ maxWidth: 640 }}>
-        <div style={{ fontSize: 30, fontWeight: 700, color: "#51607a" }}>🎧 AIR TRAFFIC CONTROL</div>
-        <div style={{ fontSize: 40, fontWeight: 800, color: "#0d2340" }}>“Climb to 36,000 feet, then fly direct to PEAKS.”</div>
       </InfoCard>
     </AbsoluteFill>
   );

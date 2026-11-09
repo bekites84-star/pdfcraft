@@ -5,10 +5,11 @@ import { Checklist } from "../../lib/props";
 import { wordFrame, type SceneTimeline } from "../../lib/timeline";
 
 const POINTS: [string, string][] = [
-  ["plan", "Flight plan"],
-  ["waypoints", "Waypoints"],
+  ["maps", "Maps"],
+  ["plans", "Flight plans"],
   ["satellites", "Satellites"],
   ["autopilot", "Autopilot"],
+  ["control", "Air traffic control"],
   ["beams", "Radio beams"],
 ];
 
