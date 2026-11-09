@@ -1,8 +1,8 @@
-import { Html, Line } from "@react-three/drei";
+import { Line } from "@react-three/drei";
 import { useMemo } from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
-import { Arrow, labelStyle, Stage, useGrow } from "../common";
+import { Arrow, Label3D, Stage, useGrow } from "../common";
 import { FORCE_COLORS } from "./Forces";
 import { wordFrame, type SceneTimeline } from "../timeline";
 
@@ -83,9 +83,7 @@ export const Lift: React.FC<{ scene: SceneTimeline }> = ({ scene }) => {
         <mesh geometry={geometry} rotation={[0.1, -0.12, 0]}>
           <meshStandardMaterial color="#2c5a9e" metalness={0.3} roughness={0.35} />
         </mesh>
-        <Html position={[0, -1.25, 0]} center>
-          <div style={{ ...labelStyle, background: "#0d2340", fontSize: 38, opacity: shape }}>A wing, seen from the side</div>
-        </Html>
+        <Label3D position={[0, -1.25, 0]} text="A wing, seen from the side" background="#0d2340" opacity={shape} height={0.55} />
       </group>
       <Arrow origin={[4.6, -0.4, 0]} dir={[0, -1, 0]} length={2.1} color={FORCE_COLORS.thrust} progress={down} label="air pushed DOWN" labelOffset={[0.4, -0.6, 0]} />
       <Arrow origin={[-0.3, 0.75, 0.6]} dir={[0, 1, 0]} length={2.2} color={FORCE_COLORS.lift} progress={up} label="LIFT ↑" labelOffset={[0, 0.6, 0]} thickness={0.16} />

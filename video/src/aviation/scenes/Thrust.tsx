@@ -1,7 +1,6 @@
-import { Html } from "@react-three/drei";
 import { interpolate, Easing, random, useCurrentFrame, useVideoConfig } from "remotion";
 import { Airplane } from "../Airplane";
-import { Arrow, CloudField, labelStyle, Stage, useGrow } from "../common";
+import { Arrow, CloudField, Label3D, Stage, useGrow } from "../common";
 import { FORCE_COLORS } from "./Forces";
 import { wordFrame, type SceneTimeline } from "../timeline";
 
@@ -59,12 +58,8 @@ export const Thrust: React.FC<{ scene: SceneTimeline }> = ({ scene }) => {
         <Airplane fan={t * 35} />
         <AirStreams z={1.6} t={t} />
         <AirStreams z={-1.6} t={t} />
-        <Html position={[ENGINE_X + 2.2, ENGINE_Y + 0.75, 1.6]} center>
-          <div style={{ ...labelStyle, background: "#2f7cf6", fontSize: 34, opacity: airIn * labelsFade }}>air IN</div>
-        </Html>
-        <Html position={[ENGINE_X - 2.3, ENGINE_Y - 0.75, 1.6]} center>
-          <div style={{ ...labelStyle, background: "#0d2340", fontSize: 34, opacity: airOut * labelsFade }}>air OUT, very fast!</div>
-        </Html>
+        <Label3D position={[ENGINE_X + 2.2, ENGINE_Y + 0.75, 1.6]} text="air IN" background="#2f7cf6" opacity={airIn * labelsFade} height={0.32} />
+        <Label3D position={[ENGINE_X - 2.3, ENGINE_Y - 0.75, 1.6]} text="air OUT, very fast!" background="#0d2340" opacity={airOut * labelsFade} height={0.32} />
         <Arrow origin={[3.4, 0, 0]} dir={[1, 0, 0]} length={2.8} color={FORCE_COLORS.thrust} progress={thrust} label="THRUST →" labelOffset={[0.2, 0.75, 0]} />
       </group>
     </Stage>

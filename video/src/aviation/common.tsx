@@ -1,7 +1,6 @@
-import { Html } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { ThreeCanvas } from "@remotion/three";
-import { useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 import * as THREE from "three";
 import { AbsoluteFill, interpolate, random, spring, useCurrentFrame, useVideoConfig } from "remotion";
 
@@ -128,9 +127,12 @@ export const Arrow: React.FC<{
         </mesh>
       </group>
       {label ? (
-        <Html position={[tip[0] + labelOffset[0], tip[1] + labelOffset[1], tip[2] + labelOffset[2]]} center zIndexRange={[10, 0]}>
-          <div style={{ ...labelStyle, background: color, opacity: Math.min(1, progress * 1.5) }}>{label}</div>
-        </Html>
+        <Label3D
+          position={[tip[0] + labelOffset[0], tip[1] + labelOffset[1], tip[2] + labelOffset[2]]}
+          text={label}
+          background={color}
+          opacity={progress * 1.5}
+        />
       ) : null}
     </group>
   );
@@ -180,5 +182,55 @@ export const TitleChip: React.FC<{ title: string }> = ({ title }) => {
         {title}
       </div>
     </AbsoluteFill>
+  );
+};
+
+/**
+ * A text badge drawn into a canvas texture and shown as a camera-facing sprite.
+ * (Used instead of drei's <Html>, whose DOM portal breaks when a scene unmounts mid-render.)
+ */
+export const Label3D: React.FC<{
+  position: [number, number, number];
+  text: string;
+  background: string;
+  opacity?: number;
+  /** Height of the badge in world units. */
+  height?: number;
+  fontSize?: number;
+}> = ({ position, text, background, opacity = 1, height = 0.62, fontSize = 64 }) => {
+  const { texture, aspect } = useMemo(() => {
+    const pad = fontSize * 0.5;
+    const font = `800 ${fontSize}px system-ui, -apple-system, "Segoe UI", sans-serif`;
+    const measure = document.createElement("canvas").getContext("2d");
+    if (measure) measure.font = font;
+    const textWidth = measure ? measure.measureText(text).width : text.length * fontSize * 0.6;
+    const w = Math.ceil(textWidth + pad * 2);
+    const h = Math.ceil(fontSize * 1.5);
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      ctx.fillStyle = background;
+      ctx.beginPath();
+      ctx.roundRect(0, 0, w, h, h * 0.25);
+      ctx.fill();
+      ctx.font = font;
+      ctx.fillStyle = "#ffffff";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(text, w / 2, h / 2 + fontSize * 0.04);
+    }
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.anisotropy = 4;
+    return { texture: tex, aspect: w / h };
+  }, [text, background, fontSize]);
+  useEffect(() => () => texture.dispose(), [texture]);
+  if (opacity <= 0.001) return null;
+  return (
+    <sprite position={position} scale={[height * aspect, height, 1]} renderOrder={10}>
+      <spriteMaterial map={texture} transparent opacity={Math.min(1, opacity)} depthTest={false} />
+    </sprite>
   );
 };
