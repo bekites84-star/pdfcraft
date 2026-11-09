@@ -21,3 +21,5 @@ public/**/*.svg
 public/**/*.glb
 public/**/*.gltf
 public/**/*.hdr
+# Generated voice-over (npm run voice)
+public/voice/

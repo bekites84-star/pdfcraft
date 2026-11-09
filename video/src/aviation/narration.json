@@ -1,0 +1,40 @@
+{
+  "title": "How Do Airplanes Fly?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "How Do Airplanes Fly?",
+      "text": "Have you ever wondered how a giant airplane, heavier than a whole herd of elephants, can fly through the sky? Let's find out!"
+    },
+    {
+      "id": "forces",
+      "title": "The Four Forces",
+      "text": "Every airplane is pushed and pulled by four forces. Lift pushes it up. Weight pulls it down. Thrust pushes it forward. And drag holds it back."
+    },
+    {
+      "id": "lift",
+      "title": "Lift: The Wings",
+      "text": "Lift comes from the wings. A wing is curved and tilted, so as it slices through the air, it pushes the air downward. When the wing pushes air down, the air pushes the wing up!"
+    },
+    {
+      "id": "thrust",
+      "title": "Thrust: The Engines",
+      "text": "Thrust comes from the engines. They suck in air and blast it out the back, very fast. Pushing air backward pushes the airplane forward."
+    },
+    {
+      "id": "takeoff",
+      "title": "Taking Off",
+      "text": "To take off, the plane races down the runway. The faster it goes, the more air flows over the wings, and the more lift they make. When lift becomes bigger than weight, up it goes!"
+    },
+    {
+      "id": "controls",
+      "title": "Steering in the Sky",
+      "text": "To steer, the pilot moves small flaps on the wings and tail. Flaps on the wings roll the plane left and right. The tail flaps point the nose up and down, and turn it from side to side."
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "So remember: lift beats weight, thrust beats drag, and the airplane flies! Thanks for watching."
+    }
+  ]
+}

@@ -7,7 +7,9 @@
     "studio": "remotion studio",
     "render": "remotion render Main out/main.mp4",
     "still": "remotion still Main out/still.png --frame=60",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "voice": "node scripts/voice.mjs",
+    "render:aviation": "remotion render HowPlanesFly out/how-planes-fly.mp4"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -16,6 +18,7 @@
     "@remotion/cli": "^4.0.541",
     "@remotion/media-utils": "^4.0.541",
     "@remotion/three": "^4.0.541",
+    "@remotion/transitions": "^4.0.541",
     "react": "19.2",
     "react-dom": "19.2",
     "remotion": "^4.0.541",
@@ -25,6 +28,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/three": "^0.187.0",
+    "kokoro-js": "^1.2.1",
     "typescript": "^7.0.2"
   }
 }

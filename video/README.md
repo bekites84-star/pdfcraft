@@ -31,6 +31,19 @@ npm run typecheck
 
 The first render downloads Remotion's headless Chrome. Without internet access, or to use a browser you already have, set `REMOTION_BROWSER=/path/to/chrome-headless-shell`. On a machine without a GPU, set `REMOTION_GL=swangle` (software WebGL) so Three.js renders.
 
+## Video: "How Do Airplanes Fly?"
+
+A ~90-second explainer that teaches flying simply, using the four forces, the wing, the engines, takeoff and steering. The source is in `src/aviation/`, and the narration is in `src/aviation/narration.json`.
+
+```sh
+npm run voice                      # AI voice-over (Kokoro neural voice, downloads ~90 MB once)
+npm run voice -- --voice am_michael   # another voice: af_heart, af_bella, am_michael, bf_emma, bm_george, ...
+npm run voice -- --engine espeak   # offline robotic fallback (needs espeak-ng; mbrola-us2 sounds best)
+npm run render:aviation            # renders out/how-planes-fly.mp4
+```
+
+The voice step writes `public/voice/aviation/` (WAV files plus `manifest.json` with timings). Scene lengths, captions and on-screen cues such as arrows appearing on "Lift" or "Weight" all follow the manifest. To change what's said, edit `narration.json`, run `npm run voice` again and re-render. Without a voice-over, the video renders silent with estimated timings.
+
 ## Making your own video
 
 - **3D**: edit `src/scene/Scene.tsx`. Drive every animation from `useCurrentFrame()` (with `interpolate`/`spring`), never from `useFrame` or clocks, so each frame renders the same way every time. Load models with drei's `useGLTF(staticFile("model.glb"))`.
