@@ -14,11 +14,19 @@ export type AirplaneProps = {
   /** Rudder deflection in radians: positive = trailing edge left (nose left). */
   rudder?: number;
   /** Highlight the control surfaces in yellow. */
-  highlight?: { ailerons?: boolean; elevator?: boolean; rudder?: boolean };
+  highlight?: { ailerons?: boolean; elevator?: boolean; rudder?: boolean; flaps?: boolean; spoilers?: boolean };
   /** 1 = landing gear down, 0 = retracted. */
   gear?: number;
   /** Fan rotation angle in radians. */
   fan?: number;
+  /** 0 = flaps up, 1 = fully extended (slide back and down). */
+  flaps?: number;
+  /** 0 = spoilers flat, 1 = fully raised. */
+  spoilers?: number;
+  /** 0..1: wheel brakes glowing hot. */
+  brakes?: number;
+  /** 0..1: warm glow from the cabin windows. */
+  cabinGlow?: number;
 };
 
 const surface = (on: boolean | undefined) =>
@@ -35,7 +43,18 @@ function plate(outline: [number, number][], thickness: number): THREE.ExtrudeGeo
 }
 
 /** A simple airliner built from primitives. The nose points along +x, up is +y, the right wing is +z. */
-export const Airplane: React.FC<AirplaneProps> = ({ aileron = 0, elevator = 0, rudder = 0, highlight = {}, gear = 0, fan = 0 }) => {
+export const Airplane: React.FC<AirplaneProps> = ({
+  aileron = 0,
+  elevator = 0,
+  rudder = 0,
+  highlight = {},
+  gear = 0,
+  fan = 0,
+  flaps = 0,
+  spoilers = 0,
+  brakes = 0,
+  cabinGlow = 0,
+}) => {
   const geo = useMemo(() => {
     const wing = plate([[1.0, 0.0], [-0.3, 3.7], [-1.0, 3.7], [-1.0, -3.7], [-0.3, -3.7], [1.0, 0.0]], 0.1);
     const stab = plate([[-2.5, 0.0], [-3.05, 1.5], [-3.2, 1.5], [-3.2, -1.5], [-3.05, -1.5], [-2.5, 0.0]], 0.06);
@@ -90,10 +109,22 @@ export const Airplane: React.FC<AirplaneProps> = ({ aileron = 0, elevator = 0, r
         </mesh>
         {[-1, 1].map((side) => (
           <group key={side}>
-            <mesh position={[-1.18, 0, side * 1.35]}>
-              <boxGeometry args={[0.36, 0.06, 1.8]} />
-              <meshStandardMaterial color={BODY} />
-            </mesh>
+            {/* Flap: slides back and tilts down */}
+            <group position={[-1.0 - flaps * 0.22, -flaps * 0.05, side * 1.35]} rotation={[0, 0, flaps * 0.55]}>
+              <mesh position={[-0.18, 0, 0]}>
+                <boxGeometry args={[0.36, 0.06, 1.8]} />
+                <meshStandardMaterial {...s(highlight.flaps)} />
+              </mesh>
+            </group>
+            {/* Spoilers: panels on top of the wing that hinge up */}
+            {[0.95, 2.15].map((z) => (
+              <group key={z} position={[-0.42, 0.06, side * z]} rotation={[0, 0, -spoilers * 0.85]}>
+                <mesh position={[-0.2, 0, 0]}>
+                  <boxGeometry args={[0.4, 0.025, 0.75]} />
+                  <meshStandardMaterial {...(highlight.spoilers ? s(true) : { color: "#dfe4ec" })} />
+                </mesh>
+              </group>
+            ))}
             <group position={[-1.0, 0, side * 2.95]} rotation={[0, 0, side * aileron]}>
               <mesh position={[-0.2, 0, 0]}>
                 <boxGeometry args={[0.4, 0.06, 1.3]} />
@@ -181,7 +212,7 @@ export const Airplane: React.FC<AirplaneProps> = ({ aileron = 0, elevator = 0, r
             </mesh>
             <mesh position={[0, -0.38, 0]} rotation={[Math.PI / 2, 0, 0]}>
               <cylinderGeometry args={[0.15, 0.15, 0.14, 16]} />
-              <meshStandardMaterial color="#20242c" />
+              <meshStandardMaterial color="#20242c" emissive="#ff4a1c" emissiveIntensity={i === 0 ? 0 : brakes * 1.6} />
             </mesh>
           </group>
         ))}

@@ -1,5 +1,4 @@
 import { staticFile } from "remotion";
-import narration from "./narration.json";
 
 export const FPS = 30;
 /** Silence before the voice starts in each scene, and after it ends. */
@@ -21,7 +20,7 @@ export type SceneTimeline = {
 
 type Manifest = { scenes: { id: string; file: string; durationMs: number; words: Word[] }[] };
 
-const MANIFEST = "voice/aviation/manifest.json";
+export type Narration = { id: string; series?: string; episode?: number; title: string; scenes: { id: string; title: string; text: string }[] };
 
 /** Rough speaking-time estimate, used only when no voice-over has been generated yet. */
 function estimateWords(text: string): { durationMs: number; words: Word[] } {
@@ -30,10 +29,13 @@ function estimateWords(text: string): { durationMs: number; words: Word[] } {
   return { durationMs: words.length * msPerWord, words };
 }
 
-export async function loadTimeline(): Promise<SceneTimeline[]> {
+/** Voice-over folder inside public/ for an episode (written by scripts/voice.mjs). */
+export const voiceDir = (episodeId: string) => `voice/${episodeId}`;
+
+export async function loadTimeline(narration: Narration): Promise<SceneTimeline[]> {
   let manifest: Manifest | null = null;
   try {
-    const res = await fetch(staticFile(MANIFEST));
+    const res = await fetch(staticFile(`${voiceDir(narration.id)}/manifest.json`));
     if (res.ok) manifest = (await res.json()) as Manifest;
   } catch {
     manifest = null;

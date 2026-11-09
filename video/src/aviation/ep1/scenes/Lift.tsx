@@ -2,9 +2,8 @@ import { Line } from "@react-three/drei";
 import { useMemo } from "react";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
 import * as THREE from "three";
-import { Arrow, Label3D, Stage, useGrow } from "../common";
-import { FORCE_COLORS } from "./Forces";
-import { wordFrame, type SceneTimeline } from "../timeline";
+import { Arrow, FORCE_COLORS, Label3D, Stage, useGrow } from "../../lib/common";
+import { wordFrame, type SceneTimeline } from "../../lib/timeline";
 
 const CHORD = 4.4;
 const ROWS = [-2.9, -2.05, -1.25, 1.2, 2.0, 2.85];

@@ -1,26 +1,39 @@
 import { Composition } from "remotion";
 import { Main, mainSchemaDefaults, type MainProps } from "./Main";
-import { HowPlanesFly, type HowPlanesFlyProps } from "./aviation/HowPlanesFly";
-import { FPS as AVIATION_FPS, loadTimeline, totalFrames } from "./aviation/timeline";
+import type { EpisodeProps } from "./aviation/lib/Episode";
+import { FPS as AVIATION_FPS, loadTimeline, totalFrames, type Narration } from "./aviation/lib/timeline";
+import * as ep1 from "./aviation/ep1";
+import * as ep2 from "./aviation/ep2";
+import * as ep3 from "./aviation/ep3";
 
 export const FPS = 30;
+
+/** "Flying Made Simple" episodes: composition id → episode module. */
+const EPISODES: { id: string; narration: Narration; Episode: React.FC<EpisodeProps> }[] = [
+  { id: "Ep1-HowPlanesFly", ...ep1 },
+  { id: "Ep2-HowPlanesLand", ...ep2 },
+  { id: "Ep3-WhyFlySoHigh", ...ep3 },
+];
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition
-        id="HowPlanesFly"
-        component={HowPlanesFly}
-        fps={AVIATION_FPS}
-        width={1920}
-        height={1080}
-        durationInFrames={AVIATION_FPS * 60}
-        defaultProps={{ timeline: [] } satisfies HowPlanesFlyProps}
-        calculateMetadata={async () => {
-          const timeline = await loadTimeline();
-          return { durationInFrames: totalFrames(timeline), props: { timeline } };
-        }}
-      />
+      {EPISODES.map(({ id, narration, Episode }) => (
+        <Composition
+          key={id}
+          id={id}
+          component={Episode}
+          fps={AVIATION_FPS}
+          width={1920}
+          height={1080}
+          durationInFrames={AVIATION_FPS * 60}
+          defaultProps={{ timeline: [] } satisfies EpisodeProps}
+          calculateMetadata={async () => {
+            const timeline = await loadTimeline(narration);
+            return { durationInFrames: totalFrames(timeline), props: { timeline } };
+          }}
+        />
+      ))}
       <Composition
         id="Main"
         component={Main}

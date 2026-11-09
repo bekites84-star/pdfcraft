@@ -1,0 +1,43 @@
+{
+  "id": "ep3-why-fly-so-high",
+  "series": "Flying Made Simple",
+  "episode": 3,
+  "title": "Why Do Planes Fly So High?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "Why Do Planes Fly So High?",
+      "text": "Big airliners cruise about eleven kilometers up. That's higher than Mount Everest! But why do they fly so high?"
+    },
+    {
+      "id": "thinair",
+      "title": "Thin Air",
+      "text": "The higher you go, the thinner the air gets. Up at cruising height, there's only about a third as much air, so there's much less drag pushing against the plane."
+    },
+    {
+      "id": "fuel",
+      "title": "Saving Fuel",
+      "text": "Less drag means the engines don't have to work as hard. So the plane burns less fuel, and can fly much farther."
+    },
+    {
+      "id": "weather",
+      "title": "Above the Weather",
+      "text": "Flying high also keeps the plane above most of the weather. Storms and bumpy clouds stay far below, so the ride is smoother."
+    },
+    {
+      "id": "safety",
+      "title": "Room to Spare",
+      "text": "Height also means safety. Mountains are far below, and if anything goes wrong, the pilots have lots of time and space to fix it."
+    },
+    {
+      "id": "cabin",
+      "title": "The Catch",
+      "text": "But there's a catch. The air up there is too thin to breathe, and freezing cold, around minus fifty degrees! So warm air is pumped into the cabin, keeping everyone comfy inside."
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Thin air, less drag, less fuel, smoother rides, and lots of safety. That's why planes fly so high! See you on the next flight."
+    }
+  ]
+}

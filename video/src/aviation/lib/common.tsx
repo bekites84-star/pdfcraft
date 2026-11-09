@@ -4,6 +4,8 @@ import { useEffect, useLayoutEffect, useMemo } from "react";
 import * as THREE from "three";
 import { AbsoluteFill, interpolate, random, spring, useCurrentFrame, useVideoConfig } from "remotion";
 
+export const FORCE_COLORS = { lift: "#22b35e", weight: "#e5484d", thrust: "#2f7cf6", drag: "#f59e0b" };
+
 export const SKY = "linear-gradient(180deg, #3b8fe0 0%, #7fbcf2 55%, #d6ecff 100%)";
 export const SUNSET = "linear-gradient(180deg, #2b2d6e 0%, #b0508a 45%, #ff9a5a 80%, #ffd27a 100%)";
 
@@ -45,11 +47,13 @@ const CameraRig: React.FC<{ position: [number, number, number]; lookAt: [number,
 };
 
 /** A fluffy cloud made of spheres. Deterministic per seed. */
-export const Cloud: React.FC<{ seed: number; position: [number, number, number]; scale?: number; opacity?: number }> = ({
+export const Cloud: React.FC<{ seed: number; position: [number, number, number]; scale?: number; opacity?: number; color?: string; glow?: number }> = ({
   seed,
   position,
   scale = 1,
   opacity = 1,
+  color = "#ffffff",
+  glow = 0.35,
 }) => {
   const puffs = Array.from({ length: 7 }, (_, i) => {
     const r = 0.6 + random(`${seed}-r-${i}`) * 0.7;
@@ -63,7 +67,7 @@ export const Cloud: React.FC<{ seed: number; position: [number, number, number];
       {puffs.map((p, i) => (
         <mesh key={i} position={[p.x, p.y, p.z]}>
           <sphereGeometry args={[p.r, 20, 14]} />
-          <meshStandardMaterial color="#ffffff" emissive="#ffffff" emissiveIntensity={0.35} roughness={1} transparent={opacity < 1} opacity={opacity} />
+          <meshStandardMaterial color={color} emissive={color} emissiveIntensity={glow} roughness={1} transparent={opacity < 1} opacity={opacity} />
         </mesh>
       ))}
     </group>
@@ -71,14 +75,17 @@ export const Cloud: React.FC<{ seed: number; position: [number, number, number];
 };
 
 /** A field of clouds drifting along -x at `speed` units per second, wrapping around. */
-export const CloudField: React.FC<{ speed?: number; count?: number; spread?: number; y?: [number, number]; z?: [number, number]; seed?: string }> = ({
-  speed = 0.5,
-  count = 10,
-  spread = 60,
-  y = [-4, 5],
-  z = [-30, -8],
-  seed = "clouds",
-}) => {
+export const CloudField: React.FC<{
+  speed?: number;
+  count?: number;
+  spread?: number;
+  y?: [number, number];
+  z?: [number, number];
+  seed?: string;
+  color?: string;
+  glow?: number;
+  size?: number;
+}> = ({ speed = 0.5, count = 10, spread = 60, y = [-4, 5], z = [-30, -8], seed = "clouds", color, glow, size = 1 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = frame / fps;
@@ -89,7 +96,7 @@ export const CloudField: React.FC<{ speed?: number; count?: number; spread?: num
         const x = ((((x0 - t * speed) % spread) + spread) % spread) - spread / 2;
         const cy = y[0] + random(`${seed}-y-${i}`) * (y[1] - y[0]);
         const cz = z[0] + random(`${seed}-z-${i}`) * (z[1] - z[0]);
-        return <Cloud key={i} seed={i} position={[x, cy, cz]} scale={1 + random(`${seed}-s-${i}`) * 1.2} />;
+        return <Cloud key={i} seed={i} position={[x, cy, cz]} scale={size * (1 + random(`${seed}-s-${i}`) * 1.2)} color={color} glow={glow} />;
       })}
     </>
   );
@@ -105,7 +112,8 @@ export const Arrow: React.FC<{
   label?: string;
   labelOffset?: [number, number, number];
   thickness?: number;
-}> = ({ origin, dir, length, color, progress, label, labelOffset = [0, 0, 0], thickness = 0.12 }) => {
+  labelHeight?: number;
+}> = ({ origin, dir, length, color, progress, label, labelOffset = [0, 0, 0], thickness = 0.12, labelHeight }) => {
   if (progress <= 0.001) return null;
   const len = Math.max(0.01, length * progress);
   const head = Math.min(len * 0.45, thickness * 4);
@@ -132,6 +140,7 @@ export const Arrow: React.FC<{
           text={label}
           background={color}
           opacity={progress * 1.5}
+          height={labelHeight}
         />
       ) : null}
     </group>

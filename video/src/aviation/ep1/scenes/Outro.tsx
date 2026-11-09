@@ -1,8 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { Airplane } from "../Airplane";
-import { CloudField, Stage, SUNSET, useGrow } from "../common";
-import { FORCE_COLORS } from "./Forces";
-import { wordFrame, type SceneTimeline } from "../timeline";
+import { Airplane } from "../../lib/Airplane";
+import { CloudField, FORCE_COLORS, SUNSET, Stage, useGrow } from "../../lib/common";
+import { wordFrame, type SceneTimeline } from "../../lib/timeline";
 
 const Line: React.FC<{ show: number; children: React.ReactNode }> = ({ show, children }) => (
   <div style={{ opacity: show, transform: `translateX(${(1 - show) * -40}px)`, marginTop: 18 }}>{children}</div>

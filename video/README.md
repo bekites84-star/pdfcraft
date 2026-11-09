@@ -31,18 +31,29 @@ npm run typecheck
 
 The first render downloads Remotion's headless Chrome. Without internet access, or to use a browser you already have, set `REMOTION_BROWSER=/path/to/chrome-headless-shell`. On a machine without a GPU, set `REMOTION_GL=swangle` (software WebGL) so Three.js renders.
 
-## Video: "How Do Airplanes Fly?"
+## Series: "Flying Made Simple"
 
-A ~90-second explainer that teaches flying simply, using the four forces, the wing, the engines, takeoff and steering. The source is in `src/aviation/`, and the narration is in `src/aviation/narration.json`.
+Short 3D explainers that teach aviation simply, each about 75 seconds long with an AI voice-over and captions.
+
+| # | Episode | Composition | Source |
+|---|---|---|---|
+| 1 | How Do Airplanes Fly? (four forces, lift, thrust, takeoff, steering) | `Ep1-HowPlanesFly` | `src/aviation/ep1/` |
+| 2 | How Do Airplanes Land? (descent, flaps, 3° glide slope, flare, braking) | `Ep2-HowPlanesLand` | `src/aviation/ep2/` |
+| 3 | Why Do Planes Fly So High? (thin air, drag, fuel, weather, safety, cabin) | `Ep3-WhyFlySoHigh` | `src/aviation/ep3/` |
+
+Shared parts live in `src/aviation/lib/`: the airliner model with moving ailerons, elevators, rudder, flaps, spoilers, gear, brakes and cabin lights, plus the sky, clouds, runway, mountains, arrows, labels, captions, the episode timeline and the cards.
 
 ```sh
-npm run voice                      # AI voice-over (Kokoro neural voice, downloads ~90 MB once)
-npm run voice -- --voice am_michael   # another voice: af_heart, af_bella, am_michael, bf_emma, bm_george, ...
-npm run voice -- --engine espeak   # offline robotic fallback (needs espeak-ng; mbrola-us2 sounds best)
-npm run render:aviation            # renders out/how-planes-fly.mp4
+npm run voice:all                          # AI voice-over for every episode (Kokoro, downloads ~90 MB once)
+npm run voice -- --episode ep2             # one episode
+npm run voice -- --episode ep2 --voice am_michael   # another voice: af_heart, af_bella, am_michael, bf_emma, bm_george, ...
+npm run voice -- --episode ep2 --engine espeak      # offline robotic fallback (needs espeak-ng)
+npm run render:ep1                         # out/ep1-how-planes-fly.mp4 (also render:ep2, render:ep3)
 ```
 
-The voice step writes `public/voice/aviation/` (WAV files plus `manifest.json` with timings). Scene lengths, captions and on-screen cues such as arrows appearing on "Lift" or "Weight" all follow the manifest. To change what's said, edit `narration.json`, run `npm run voice` again and re-render. Without a voice-over, the video renders silent with estimated timings.
+Each episode's words are in its `narration.json`. The voice step writes `public/voice/<episode id>/` (WAV files plus `manifest.json` with timings). Scene lengths, captions and on-screen cues such as arrows and labels appearing when a word is spoken all follow that manifest. To change the script, edit the JSON, run the voice step and re-render.
+
+**Adding an episode:** copy `src/aviation/ep3/` to `ep4/` and give it a new `id`, `episode` number and scenes in `narration.json`. Write one component per scene id, list them in `index.ts`, and add the episode to `EPISODES` in `src/Root.tsx`. Then add `render:ep4` to `package.json`.
 
 ## Making your own video
 

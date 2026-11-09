@@ -1,6 +1,7 @@
 // Generates the AI voice-over for a narration file and writes a timing manifest.
 //
-//   node scripts/voice.mjs [--engine kokoro|espeak] [--voice NAME] [--narration src/aviation/narration.json] [--out public/voice/aviation]
+//   node scripts/voice.mjs [--episode ep1|ep2|ep3] [--engine kokoro|espeak] [--voice NAME]
+//                          [--narration path/to/narration.json] [--out public/voice/<narration id>]
 //
 // kokoro (default): Kokoro-82M neural voice (Apache-2.0) via kokoro-js. Downloads the model
 //   from Hugging Face on first use (~90 MB, cached). Voices: af_heart, af_bella, am_michael, bf_emma, ...
@@ -25,9 +26,9 @@ const args = Object.fromEntries(
   process.argv.slice(2).reduce((acc, a, i, all) => (a.startsWith("--") ? [...acc, [a.slice(2), all[i + 1]]] : acc), []),
 );
 const engine = args.engine ?? "kokoro";
-const narrationPath = args.narration ?? "src/aviation/narration.json";
-const outDir = args.out ?? "public/voice/aviation";
+const narrationPath = args.narration ?? `src/aviation/${args.episode ?? "ep1"}/narration.json`;
 const narration = JSON.parse(readFileSync(narrationPath, "utf8"));
+const outDir = args.out ?? `public/voice/${narration.id}`;
 mkdirSync(outDir, { recursive: true });
 
 /** Duration in ms of a PCM WAV file, read from its header chunks. */

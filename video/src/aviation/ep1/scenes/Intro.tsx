@@ -1,7 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { Airplane } from "../Airplane";
-import { CloudField, Stage, useGrow } from "../common";
-import type { SceneTimeline } from "../timeline";
+import { Airplane } from "../../lib/Airplane";
+import { CloudField, Stage, useGrow } from "../../lib/common";
+import type { SceneTimeline } from "../../lib/timeline";
 
 export const Intro: React.FC<{ scene: SceneTimeline }> = ({ scene }) => {
   const frame = useCurrentFrame();

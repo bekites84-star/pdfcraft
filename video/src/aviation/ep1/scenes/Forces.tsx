@@ -1,9 +1,7 @@
 import { useCurrentFrame, useVideoConfig } from "remotion";
-import { Airplane } from "../Airplane";
-import { Arrow, CloudField, Stage, useGrow } from "../common";
-import { wordFrame, type SceneTimeline } from "../timeline";
-
-export const FORCE_COLORS = { lift: "#22b35e", weight: "#e5484d", thrust: "#2f7cf6", drag: "#f59e0b" };
+import { Airplane } from "../../lib/Airplane";
+import { Arrow, CloudField, FORCE_COLORS, Stage, useGrow } from "../../lib/common";
+import { wordFrame, type SceneTimeline } from "../../lib/timeline";
 
 export const Forces: React.FC<{ scene: SceneTimeline }> = ({ scene }) => {
   const frame = useCurrentFrame();

@@ -1,7 +1,7 @@
 import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from "remotion";
-import { Airplane } from "../Airplane";
-import { CloudField, Stage } from "../common";
-import { wordFrame, type SceneTimeline } from "../timeline";
+import { Airplane } from "../../lib/Airplane";
+import { CloudField, Stage } from "../../lib/common";
+import { wordFrame, type SceneTimeline } from "../../lib/timeline";
 
 const MOVES = [
   { key: "roll", name: "ROLL", part: "ailerons on the wings", hint: "tilt left & right" },

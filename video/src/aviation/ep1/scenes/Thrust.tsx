@@ -1,8 +1,7 @@
 import { interpolate, Easing, random, useCurrentFrame, useVideoConfig } from "remotion";
-import { Airplane } from "../Airplane";
-import { Arrow, CloudField, Label3D, Stage, useGrow } from "../common";
-import { FORCE_COLORS } from "./Forces";
-import { wordFrame, type SceneTimeline } from "../timeline";
+import { Airplane } from "../../lib/Airplane";
+import { Arrow, CloudField, FORCE_COLORS, Label3D, Stage, useGrow } from "../../lib/common";
+import { wordFrame, type SceneTimeline } from "../../lib/timeline";
 
 const ENGINE_Y = -0.64;
 const ENGINE_X = 0.75;
