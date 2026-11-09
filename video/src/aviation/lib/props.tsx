@@ -129,7 +129,7 @@ export const IntroTitle: React.FC<{ series: string; episode: number; title: stri
     <div style={{ fontSize: 112, fontWeight: 900, color: "white", textShadow: "0 8px 30px rgba(10,40,90,0.45)", marginTop: 18, transform: `scale(${0.6 + 0.4 * grow})`, opacity: grow }}>
       {title}
     </div>
-    <div style={{ fontSize: 44, fontWeight: 700, color: "#eaf4ff", marginTop: 8, opacity: sub, transform: `translateY(${(1 - sub) * 20}px)` }}>{subtitle}</div>
+    <div style={{ fontSize: 44, fontWeight: 700, color: "#ffffff", textShadow: "0 3px 14px rgba(10,30,70,0.75), 0 0 4px rgba(10,30,70,0.6)", marginTop: 8, opacity: sub, transform: `translateY(${(1 - sub) * 20}px)` }}>{subtitle}</div>
   </div>
 );
 

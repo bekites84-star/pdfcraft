@@ -31,6 +31,18 @@ export type AirplaneProps = {
   brakes?: number;
   /** 0..1: warm glow from the cabin windows. */
   cabinGlow?: number;
+  /** Wing flex in radians: positive bends both wingtips up. */
+  wingFlex?: number;
+};
+
+/** Pivots one wing (and everything on it) about its root, so the tip rises with `flex`. */
+const WingFlex: React.FC<{ side: 1 | -1; flex: number; children: React.ReactNode }> = ({ side, flex, children }) => {
+  const pivot: [number, number, number] = [0, wingY(0.35), side * 0.35];
+  return (
+    <group position={pivot} rotation={[-side * flex, 0, 0]}>
+      <group position={[-pivot[0], -pivot[1], -pivot[2]]}>{children}</group>
+    </group>
+  );
 };
 
 /** Distance from the plane's origin to the bottom of its wheels, with the gear down. */
@@ -180,6 +192,7 @@ export const Airplane: React.FC<AirplaneProps> = ({
   spoilers = 0,
   brakes = 0,
   cabinGlow = 0,
+  wingFlex = 0,
 }) => {
   const geo = airplaneGeometry();
   const gearScale = Math.max(0.001, gear);
@@ -232,27 +245,23 @@ export const Airplane: React.FC<AirplaneProps> = ({
         </group>
       ))}
 
-      {/* Wings */}
-      <mesh geometry={geo.wingR}>
-        <Paint />
-      </mesh>
-      <mesh geometry={geo.wingL}>
-        <Paint />
-      </mesh>
-      <HingedPart part={geo.flap.right} angle={flaps * 0.55} slide={flaps * 0.18} on={highlight.flaps} />
-      <HingedPart part={geo.flap.left} angle={flaps * 0.55} slide={flaps * 0.18} on={highlight.flaps} />
-      <HingedPart part={geo.aileron.right} angle={aileron} on={highlight.ailerons} />
-      <HingedPart part={geo.aileron.left} angle={-aileron} on={highlight.ailerons} />
-      {geo.spoilers.map((sp, i) => (
-        <group key={i}>
-          <HingedPart part={sp.right} angle={-spoilers * 0.85} on={highlight.spoilers} />
-          <HingedPart part={sp.left} angle={-spoilers * 0.85} on={highlight.spoilers} />
-        </group>
-      ))}
-
-      {/* Engines */}
-      <Engine side={1} fan={fan} />
-      <Engine side={-1} fan={fan} />
+      {/* Wings (each side, with its control surfaces and engine, can flex up about the root) */}
+      {([1, -1] as const).map((side) => {
+        const r = side > 0 ? "right" : "left";
+        return (
+          <WingFlex key={side} side={side} flex={wingFlex}>
+            <mesh geometry={side > 0 ? geo.wingR : geo.wingL}>
+              <Paint />
+            </mesh>
+            <HingedPart part={geo.flap[r]} angle={flaps * 0.55} slide={flaps * 0.18} on={highlight.flaps} />
+            <HingedPart part={geo.aileron[r]} angle={side * aileron} on={highlight.ailerons} />
+            {geo.spoilers.map((sp, i) => (
+              <HingedPart key={i} part={sp[r]} angle={-spoilers * 0.85} on={highlight.spoilers} />
+            ))}
+            <Engine side={side} fan={fan} />
+          </WingFlex>
+        );
+      })}
 
       {/* Tail: stabilisers, elevators, fin and rudder */}
       <mesh geometry={geo.stabR}>

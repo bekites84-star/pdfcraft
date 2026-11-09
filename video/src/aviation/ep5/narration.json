@@ -1,0 +1,38 @@
+{
+  "id": "ep5-what-is-turbulence",
+  "series": "Flying Made Simple",
+  "episode": 5,
+  "title": "What Is Turbulence?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "What Is Turbulence?",
+      "text": "Sometimes, the plane suddenly shakes and bumps. That's turbulence! But what is it, and should you worry?"
+    },
+    {
+      "id": "river",
+      "title": "A River of Air",
+      "text": "Air flows like an invisible river. When the river is smooth, the ride is smooth. But when the air swirls and tumbles, like water rushing over rocks, the plane gets bumped around."
+    },
+    {
+      "id": "causes",
+      "title": "Where Bumps Come From",
+      "text": "Bumpy air comes from many things: warm air rising from the sunny ground, wind tumbling over mountains, and big, puffy storm clouds."
+    },
+    {
+      "id": "strong",
+      "title": "Built Tough",
+      "text": "But don't worry! Airplanes are built super strong. Their wings can bend and flex, like a bird's, and they're tested far beyond the biggest bumps they'll ever meet."
+    },
+    {
+      "id": "radar",
+      "title": "Staying Safe",
+      "text": "Pilots use weather radar to steer around storms. And when it might get bumpy, they switch on the seatbelt sign. So keep your seatbelt fastened, and enjoy the ride!"
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Rivers of air, rising heat, mountains and storms, strong wings, and seatbelts on. That's turbulence! See you on the next flight."
+    }
+  ]
+}

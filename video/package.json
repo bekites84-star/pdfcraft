@@ -9,10 +9,12 @@
     "still": "remotion still Main out/still.png --frame=60",
     "typecheck": "tsc --noEmit",
     "voice": "node scripts/voice.mjs",
-    "voice:all": "node scripts/voice.mjs --episode ep1 && node scripts/voice.mjs --episode ep2 && node scripts/voice.mjs --episode ep3",
+    "voice:all": "node scripts/voice.mjs --episode ep1 && node scripts/voice.mjs --episode ep2 && node scripts/voice.mjs --episode ep3 && node scripts/voice.mjs --episode ep4 && node scripts/voice.mjs --episode ep5",
     "render:ep1": "remotion render Ep1-HowPlanesFly out/ep1-how-planes-fly.mp4",
     "render:ep2": "remotion render Ep2-HowPlanesLand out/ep2-how-planes-land.mp4",
-    "render:ep3": "remotion render Ep3-WhyFlySoHigh out/ep3-why-fly-so-high.mp4"
+    "render:ep3": "remotion render Ep3-WhyFlySoHigh out/ep3-why-fly-so-high.mp4",
+    "render:ep4": "remotion render Ep4-HowPilotsNavigate out/ep4-how-pilots-navigate.mp4",
+    "render:ep5": "remotion render Ep5-WhatIsTurbulence out/ep5-what-is-turbulence.mp4"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
