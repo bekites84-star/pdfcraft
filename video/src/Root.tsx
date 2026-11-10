@@ -10,6 +10,7 @@ import * as ep5 from "./aviation/ep5";
 import * as ep6 from "./aviation/ep6";
 import * as ep7 from "./aviation/ep7";
 import { Turntable } from "./aviation/lib/Turntable";
+import { Thumbnail, thumbnailEpisodes } from "./aviation/thumbs/Thumbnail";
 
 export const FPS = 30;
 
@@ -42,6 +43,9 @@ export const RemotionRoot: React.FC = () => {
             return { durationInFrames: totalFrames(timeline), props: { timeline } };
           }}
         />
+      ))}
+      {thumbnailEpisodes.map((n) => (
+        <Composition key={`thumb${n}`} id={`Thumb-Ep${n}`} component={Thumbnail} fps={30} width={1280} height={720} durationInFrames={1} defaultProps={{ episode: n }} />
       ))}
       <Composition id="AirplaneTurntable" component={Turntable} fps={30} width={1920} height={1080} durationInFrames={30 * 10} />
       <Composition

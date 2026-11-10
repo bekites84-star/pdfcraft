@@ -16,7 +16,8 @@
     "render:ep4": "remotion render Ep4-HowPilotsNavigate out/ep4-how-pilots-navigate.mp4",
     "render:ep5": "remotion render Ep5-WhatIsTurbulence out/ep5-what-is-turbulence.mp4",
     "render:ep6": "remotion render Ep6-InsideTheCockpit out/ep6-inside-the-cockpit.mp4",
-    "render:ep7": "remotion render Ep7-HowHelicoptersFly out/ep7-how-helicopters-fly.mp4"
+    "render:ep7": "remotion render Ep7-HowHelicoptersFly out/ep7-how-helicopters-fly.mp4",
+    "thumbnails": "node scripts/thumbnails.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
