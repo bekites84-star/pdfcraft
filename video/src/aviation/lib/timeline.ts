@@ -53,9 +53,25 @@ export async function loadTimeline(narration: Narration): Promise<SceneTimeline[
   });
 }
 
-export function totalFrames(timeline: SceneTimeline[]): number {
-  const sum = timeline.reduce((s, t) => s + t.durationInFrames, 0);
-  return Math.max(1, sum - TRANSITION_FRAMES * Math.max(0, timeline.length - 1));
+/** How long the thumbnail title card is held at the start of an episode. */
+export const OPENING_FRAMES = 60;
+
+/** The episode's thumbnail inside public/ (written by `npm run thumbnails`), or null if missing. */
+export async function findOpening(narration: Narration): Promise<string | null> {
+  if (!narration.episode) return null;
+  const path = `thumbnails/ep${narration.episode}.png`;
+  try {
+    const res = await fetch(staticFile(path), { method: "HEAD" });
+    return res.ok ? path : null;
+  } catch {
+    return null;
+  }
+}
+
+export function totalFrames(timeline: SceneTimeline[], opening: string | null = null): number {
+  const sum = timeline.reduce((s, t) => s + t.durationInFrames, 0) + (opening ? OPENING_FRAMES : 0);
+  const cuts = Math.max(0, timeline.length - 1) + (opening ? 1 : 0);
+  return Math.max(1, sum - TRANSITION_FRAMES * cuts);
 }
 
 const norm = (w: string) => w.toLowerCase().replace(/[^\p{L}\p{N}]/gu, "");

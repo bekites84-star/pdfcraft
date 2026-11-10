@@ -1,7 +1,7 @@
 import { Composition } from "remotion";
 import { Main, mainSchemaDefaults, type MainProps } from "./Main";
 import type { EpisodeProps } from "./aviation/lib/Episode";
-import { FPS as AVIATION_FPS, loadTimeline, totalFrames, type Narration } from "./aviation/lib/timeline";
+import { FPS as AVIATION_FPS, findOpening, loadTimeline, totalFrames, type Narration } from "./aviation/lib/timeline";
 import * as ep1 from "./aviation/ep1";
 import * as ep2 from "./aviation/ep2";
 import * as ep3 from "./aviation/ep3";
@@ -39,8 +39,8 @@ export const RemotionRoot: React.FC = () => {
           durationInFrames={AVIATION_FPS * 60}
           defaultProps={{ timeline: [] } satisfies EpisodeProps}
           calculateMetadata={async () => {
-            const timeline = await loadTimeline(narration);
-            return { durationInFrames: totalFrames(timeline), props: { timeline } };
+            const [timeline, opening] = await Promise.all([loadTimeline(narration), findOpening(narration)]);
+            return { durationInFrames: totalFrames(timeline, opening), props: { timeline, opening } };
           }}
         />
       ))}

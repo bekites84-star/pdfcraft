@@ -57,7 +57,11 @@ npm run render:ep1                         # out/ep1-how-planes-fly.mp4 (also re
 
 Each episode's words are in its `narration.json`. The voice step writes `public/voice/<episode id>/` (WAV files plus `manifest.json` with timings). Scene lengths, captions and on-screen cues such as arrows and labels appearing when a word is spoken all follow that manifest. To change the script, edit the JSON, run the voice step and re-render.
 
-**Thumbnails:** `npm run thumbnails` renders a 1280×720 YouTube thumbnail for each episode into `out/thumbnails/`. Each has a bold headline, a 3D scene from the episode and an episode badge. Headlines and scenes are in `src/aviation/thumbs/Thumbnail.tsx`; words in `*stars*` are drawn in yellow.
+**Thumbnails:** `npm run thumbnails` renders each episode's thumbnail twice. `out/thumbnails/epN-thumbnail.png` (1280×720) is the one to upload to YouTube. `public/thumbnails/epN.png` (1920×1080) becomes the video's opening title card: when it exists, the episode opens on it for 2 seconds and fades into the first scene. Headlines and scenes are in `src/aviation/thumbs/Thumbnail.tsx`; words in `*stars*` are drawn in yellow.
+
+**Cover art:** after rendering, `npm run covers` embeds each thumbnail into its MP4 as cover art, so phones, players and file browsers show it as the poster.
+
+Full order for a finished episode: `npm run voice -- --episode ep1`, `npm run thumbnails`, `npm run render:ep1`, `npm run covers`.
 
 **Adding an episode:** copy `src/aviation/ep7/` to `ep8/` and give it a new `id`, `episode` number and scenes in `narration.json`. Write one component per scene id, list them in `index.ts`, and add the episode to `EPISODES` in `src/Root.tsx`. Then add `render:ep8` to `package.json`.
 
