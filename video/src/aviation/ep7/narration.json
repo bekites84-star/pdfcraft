@@ -1,0 +1,48 @@
+{
+  "id": "ep7-how-helicopters-fly",
+  "series": "Flying Made Simple",
+  "episode": 7,
+  "title": "How Do Helicopters Fly?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "How Do Helicopters Fly?",
+      "text": "Airplanes need long runways. But helicopters can take off straight up, hover in one spot, and even fly backwards! How do they do it?"
+    },
+    {
+      "id": "wings",
+      "title": "Spinning Wings",
+      "text": "The secret is on top. A helicopter's spinning blades are really long, thin wings. As they whirl around, each blade pushes air down, just like an airplane wing, and that lifts the helicopter up."
+    },
+    {
+      "id": "hover",
+      "title": "Hovering",
+      "text": "Because the blades keep moving even when the helicopter stands still, it can hover in one spot, just like a hummingbird!"
+    },
+    {
+      "id": "collective",
+      "title": "Up and Down",
+      "text": "To go up or down, the pilot pulls a lever called the collective. It tilts all the blades at once, so they bite more air, and up it goes!"
+    },
+    {
+      "id": "cyclic",
+      "title": "Any Direction",
+      "text": "To fly forward, sideways or backward, the pilot moves a stick called the cyclic. It tilts the spinning rotor, and the helicopter moves whichever way the rotor tilts."
+    },
+    {
+      "id": "tail",
+      "title": "The Tail Rotor",
+      "text": "But there's a catch! Spinning the big rotor one way makes the body want to spin the other way. So a small tail rotor pushes sideways to stop it, and the pedals use it to turn."
+    },
+    {
+      "id": "anywhere",
+      "title": "Land Anywhere",
+      "text": "That's why helicopters can land almost anywhere: on rooftops, on ships, and on mountains, for rescues, hospitals and more."
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Spinning wings, hovering, the collective, the cyclic, and a tail rotor. That's how helicopters fly! See you on the next flight."
+    }
+  ]
+}

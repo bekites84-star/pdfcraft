@@ -42,20 +42,22 @@ Short 3D explainers that teach aviation simply, each about 75 seconds long with 
 | 3 | Why Do Planes Fly So High? (thin air, drag, fuel, weather, safety, cabin) | `Ep3-WhyFlySoHigh` | `src/aviation/ep3/` |
 | 4 | How Do Pilots Find Their Way? (flight plan, waypoints, GPS, autopilot and ATC, radio beam in fog) | `Ep4-HowPilotsNavigate` | `src/aviation/ep4/` |
 | 5 | What Is Turbulence? (rivers of air, causes, flexing wings, weather radar, seatbelt sign) | `Ep5-WhatIsTurbulence` | `src/aviation/ep5/` |
+| 6 | What's in the Cockpit? (two pilots, speed tape, attitude indicator, altitude, moving map, controls, checklists) | `Ep6-InsideTheCockpit` | `src/aviation/ep6/` |
+| 7 | How Do Helicopters Fly? (spinning wings, hovering, collective, cyclic, tail rotor, landing anywhere) | `Ep7-HowHelicoptersFly` | `src/aviation/ep7/` |
 
-Shared parts live in `src/aviation/lib/`: the airliner model with moving ailerons, elevators, rudder, flaps, spoilers, gear, brakes and cabin lights, plus the sky, clouds, runway, mountains, arrows, labels, captions, the episode timeline and the cards.
+Shared parts live in `src/aviation/lib/`: the airliner model (`Airplane.tsx`) and a rescue helicopter (`Helicopter.tsx`), the airliner with moving ailerons, elevators, rudder, flaps, spoilers, gear, brakes and cabin lights, plus the sky, clouds, runway, mountains, arrows, labels, captions, the episode timeline and the cards.
 
 ```sh
 npm run voice:all                          # AI voice-over for every episode (Kokoro, downloads ~90 MB once)
 npm run voice -- --episode ep2             # one episode
 npm run voice -- --episode ep2 --voice am_michael   # another voice: af_heart, af_bella, am_michael, bf_emma, bm_george, ...
 npm run voice -- --episode ep2 --engine espeak      # offline robotic fallback (needs espeak-ng)
-npm run render:ep1                         # out/ep1-how-planes-fly.mp4 (also render:ep2 … render:ep5)
+npm run render:ep1                         # out/ep1-how-planes-fly.mp4 (also render:ep2 … render:ep7)
 ```
 
 Each episode's words are in its `narration.json`. The voice step writes `public/voice/<episode id>/` (WAV files plus `manifest.json` with timings). Scene lengths, captions and on-screen cues such as arrows and labels appearing when a word is spoken all follow that manifest. To change the script, edit the JSON, run the voice step and re-render.
 
-**Adding an episode:** copy `src/aviation/ep5/` to `ep6/` and give it a new `id`, `episode` number and scenes in `narration.json`. Write one component per scene id, list them in `index.ts`, and add the episode to `EPISODES` in `src/Root.tsx`. Then add `render:ep6` to `package.json`.
+**Adding an episode:** copy `src/aviation/ep7/` to `ep8/` and give it a new `id`, `episode` number and scenes in `narration.json`. Write one component per scene id, list them in `index.ts`, and add the episode to `EPISODES` in `src/Root.tsx`. Then add `render:ep8` to `package.json`.
 
 ## Making your own video
 
