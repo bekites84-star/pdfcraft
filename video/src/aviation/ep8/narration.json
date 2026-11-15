@@ -1,0 +1,48 @@
+{
+  "id": "ep8-how-jet-engines-work",
+  "series": "Flying Made Simple",
+  "episode": 8,
+  "title": "How Does a Jet Engine Work?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "How Does a Jet Engine Work?",
+      "text": "Jet engines push giant airliners through the sky at nearly a thousand kilometers an hour. How do they do it? Just remember four words: suck, squeeze, bang, blow!"
+    },
+    {
+      "id": "inside",
+      "title": "Look Inside",
+      "text": "Let's cut one open. Air goes in at the front, travels through the engine, and shoots out the back, much faster than it went in."
+    },
+    {
+      "id": "suck",
+      "title": "1. Suck",
+      "text": "Suck! The giant fan at the front spins thousands of times a minute. At full power, it gulps in more than a ton of air every second!"
+    },
+    {
+      "id": "squeeze",
+      "title": "2. Squeeze",
+      "text": "Squeeze! Behind the fan, rows and rows of smaller blades, called the compressor, squash the air tighter and tighter. Squashing it also makes it hot."
+    },
+    {
+      "id": "bang",
+      "title": "3. Bang",
+      "text": "Bang! Fuel is sprayed into the squeezed air and set alight. It doesn't really go bang: it burns steadily, like a giant blowtorch, and the super-hot gas expands with huge force."
+    },
+    {
+      "id": "blow",
+      "title": "4. Blow",
+      "text": "Blow! The hot gas rushes out the back. On the way, it spins the turbine, which is joined by a shaft to the fan and compressor, so the engine keeps itself turning."
+    },
+    {
+      "id": "bypass",
+      "title": "The Big Secret",
+      "text": "Here's the big secret. In modern airliner engines, most of the air never goes through the hot middle at all. The fan blows it around the outside, and that gives most of the push!"
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Suck, squeeze, bang, and blow. That's how a jet engine works! See you on the next flight."
+    }
+  ]
+}

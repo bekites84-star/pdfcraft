@@ -1,0 +1,53 @@
+{
+  "id": "ep6-inside-the-cockpit",
+  "series": "Flying Made Simple",
+  "episode": 6,
+  "title": "What's in the Cockpit?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "What's in the Cockpit?",
+      "text": "Step inside the cockpit! It's packed with screens, buttons and switches. But don't worry: each one has a simple job. Let's take a look!"
+    },
+    {
+      "id": "seats",
+      "title": "Two Pilots",
+      "text": "There are two seats up front. The captain sits on the left, and the first officer sits on the right. Both are fully trained pilots, and they share the work."
+    },
+    {
+      "id": "speed",
+      "title": "The Speed Tape",
+      "text": "On the main screen, the speed tape shows how fast the plane is flying. Too slow, and the wings can't make enough lift. Too fast, and it's hard on the plane. So pilots keep the speed just right."
+    },
+    {
+      "id": "attitude",
+      "title": "Sky and Ground",
+      "text": "In the middle is the attitude indicator. Blue is the sky, and brown is the ground. It shows whether the nose is up or down, and if the wings are tilted, even inside a thick cloud."
+    },
+    {
+      "id": "altitude",
+      "title": "How High?",
+      "text": "On the right, the altitude tape shows how high the plane is, and a little arrow shows whether it's climbing or coming down."
+    },
+    {
+      "id": "map",
+      "title": "The Moving Map",
+      "text": "The map screen shows the route as a magenta line, with waypoints along the way. It can also show stormy weather, and other planes nearby."
+    },
+    {
+      "id": "controls",
+      "title": "Flying by Hand",
+      "text": "To fly by hand, the pilot turns a control wheel called the yoke, and pushes the throttle levers forward for more power. But most of the time, the autopilot does the flying."
+    },
+    {
+      "id": "checklist",
+      "title": "Checklists",
+      "text": "And before every big step, the pilots read checklists out loud, so nothing is ever forgotten."
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Two pilots, speed, attitude, altitude, a moving map, and checklists. That's the cockpit! See you on the next flight."
+    }
+  ]
+}

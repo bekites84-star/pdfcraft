@@ -1,0 +1,43 @@
+{
+  "id": "ep2-how-planes-land",
+  "series": "Flying Made Simple",
+  "episode": 2,
+  "title": "How Do Airplanes Land?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "How Do Airplanes Land?",
+      "text": "Taking off is exciting, but landing is the trickiest part of every flight. Let's see how pilots bring a giant airplane gently back to the ground."
+    },
+    {
+      "id": "descent",
+      "title": "Gliding Down",
+      "text": "Landing starts long before the runway. Far from the airport, the pilots turn the engines down, and the plane slowly glides lower and lower, like a paper plane on a gentle slope."
+    },
+    {
+      "id": "flaps",
+      "title": "Flaps Out",
+      "text": "To land, the plane must fly slowly. But slow wings make less lift! So flaps slide out from the back of the wings, making them bigger and more curved, which gives extra lift at low speed."
+    },
+    {
+      "id": "approach",
+      "title": "Lining Up",
+      "text": "Next, the landing gear comes down, and the plane lines up with the runway. It follows an invisible slope, just three degrees, all the way to the ground."
+    },
+    {
+      "id": "flare",
+      "title": "The Flare",
+      "text": "Just above the runway, the pilot gently raises the nose. This is called the flare. It slows the sinking, so the wheels touch down softly."
+    },
+    {
+      "id": "braking",
+      "title": "Stopping",
+      "text": "Now, time to stop! Spoilers pop up on the wings to spoil the lift. The engines blow air forward, and the wheel brakes do the rest."
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Glide down, flaps out, gear down, flare, and stop. That's how an airplane lands! See you on the next flight."
+    }
+  ]
+}
