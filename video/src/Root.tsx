@@ -10,6 +10,7 @@ import * as ep5 from "./aviation/ep5";
 import * as ep6 from "./aviation/ep6";
 import * as ep7 from "./aviation/ep7";
 import * as ep8 from "./aviation/ep8";
+import * as ep9 from "./aviation/ep9";
 import { Turntable } from "./aviation/lib/Turntable";
 import { Thumbnail, thumbnailEpisodes } from "./aviation/thumbs/Thumbnail";
 
@@ -25,6 +26,7 @@ const EPISODES: { id: string; narration: Narration; Episode: React.FC<EpisodePro
   { id: "Ep6-InsideTheCockpit", ...ep6 },
   { id: "Ep7-HowHelicoptersFly", ...ep7 },
   { id: "Ep8-HowJetEnginesWork", ...ep8 },
+  { id: "Ep9-BeforeTakeoff", ...ep9 },
 ];
 
 export const RemotionRoot: React.FC = () => {

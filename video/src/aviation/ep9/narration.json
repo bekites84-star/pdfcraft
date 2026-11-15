@@ -1,0 +1,53 @@
+{
+  "id": "ep9-before-takeoff",
+  "series": "Flying Made Simple",
+  "episode": 9,
+  "title": "What Happens Before Takeoff?",
+  "scenes": [
+    {
+      "id": "intro",
+      "title": "What Happens Before Takeoff?",
+      "text": "Before a plane takes off, a whole team gets it ready, often in under an hour. It's like a pit stop at a car race! Let's watch what happens at the airport."
+    },
+    {
+      "id": "bags",
+      "title": "Your Suitcase's Journey",
+      "text": "First, your suitcase gets a tag with a barcode. Scanners read the tag, and a maze of conveyor belts sends every bag to the right plane."
+    },
+    {
+      "id": "loading",
+      "title": "Loading the Hold",
+      "text": "Ground crew drive the bags out on little trains of carts. Then a belt loader carries them up into the hold, under the cabin floor."
+    },
+    {
+      "id": "fuel",
+      "title": "Filling Up",
+      "text": "A fuel truck pumps fuel into tanks inside the wings. A big jet can carry as much fuel as a thousand bathtubs!"
+    },
+    {
+      "id": "catering",
+      "title": "Food and Drinks",
+      "text": "Meanwhile, a catering truck lifts its box right up to the door, with meals and drinks, while cleaners tidy up the cabin."
+    },
+    {
+      "id": "walkaround",
+      "title": "The Walk-Around",
+      "text": "A pilot walks all the way around the plane, checking the tyres, the engines, and the flaps, to make sure everything looks just right."
+    },
+    {
+      "id": "pushback",
+      "title": "Pushback",
+      "text": "Doors closed! A small but mighty tug pushes the plane backwards, away from the gate, because airliners don't drive backwards on their own."
+    },
+    {
+      "id": "tower",
+      "title": "Cleared for Takeoff",
+      "text": "Then the plane taxis out to the runway, and the control tower gives the final word: cleared for takeoff!"
+    },
+    {
+      "id": "outro",
+      "title": "Remember!",
+      "text": "Bags, fuel, food, checks, pushback, and the tower. That's what happens before takeoff! See you on the next flight."
+    }
+  ]
+}

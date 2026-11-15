@@ -1,6 +1,8 @@
 import { Line } from "@react-three/drei";
 import { AbsoluteFill } from "remotion";
 import { Cockpit } from "../ep6/cockpit";
+import { JetEngine } from "../ep8/engine";
+import { Apron, Cart, PARKED_Y, Tower, Truck, Tug } from "../ep9/airport";
 import { Helipad } from "../ep7/world";
 import { Airplane, GEAR_HEIGHT } from "../lib/Airplane";
 import { Arrow, Cloud, CloudField, FORCE_COLORS, Stage } from "../lib/common";
@@ -126,6 +128,41 @@ const THUMBS: Thumb[] = [
           <Helicopter rotor={0.4} tail={0.3} blur={0.9} tilt={[0.06, 0]} />
           <Arrow origin={[0, ROTOR_Y + 0.3, 0]} dir={[0, 1, 0]} length={2.2} color={FORCE_COLORS.lift} progress={1} thickness={0.16} />
         </group>
+      </Stage>
+    ),
+  },
+  {
+    episode: 8,
+    lines: ["HOW JET", "ENGINES", "*WORK*"],
+    background: "radial-gradient(circle at 60% 45%, #2b3a55 0%, #121a29 75%)",
+    scene: (
+      <Stage background="radial-gradient(circle at 60% 45%, #2b3a55 0%, #121a29 75%)" camera={{ position: [3.5, 2.4, 11.5], fov: 44 }} lookAt={[-3.4, 0.1, 0]}>
+        <pointLight position={[2, 3, 6]} intensity={30} distance={20} color="#ffffff" />
+        <JetEngine spin={0.4} t={1.3} highlight={{ fan: true }} core={1} bypass={0.7} flame={1} />
+      </Stage>
+    ),
+  },
+  {
+    episode: 9,
+    lines: ["BEFORE", "*TAKEOFF*"],
+    background: SKYB,
+    scene: (
+      <Stage background={SKYB} camera={{ position: [-7, 4.5, 10.5], fov: 42 }} lookAt={[-4.6, 1.3, 0]}>
+        <Apron />
+        <Tower position={[14, 0, -14]} />
+        <group position={[0, PARKED_Y, 0]}>
+          <Airplane gear={1} />
+        </group>
+        <Tug position={[3.25, 0, 0]} heading={Math.PI} />
+        <Truck position={[-0.6, 0, 4]} color="#e5484d">
+          <mesh position={[-0.35, 0.72, 0]} rotation={[0, 0, Math.PI / 2]}>
+            <cylinderGeometry args={[0.38, 0.38, 1.3, 20]} />
+            <meshStandardMaterial color="#e9edf3" />
+          </mesh>
+        </Truck>
+        {[0, 1, 2].map((i) => (
+          <Cart key={i} position={[-3.6 + i * 1.05, 0, 3.4]} seed={i * 3} />
+        ))}
       </Stage>
     ),
   },
